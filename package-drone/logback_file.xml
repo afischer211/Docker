@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration>
+
+<configuration>
+
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<resetJUL>true</resetJUL>
+	</contextListener>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+			<encoder>
+					<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+			</encoder>
+	</appender>
+
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+			<file>/var/log/package-drone/pdrone.log</file>
+			<encoder>
+							<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%file:%line] %msg%n</pattern>
+			</encoder>
+			<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+							<fileNamePattern>/var/log/package-drone/pdrone.%i.log.zip</fileNamePattern>
+							<minIndex>1</minIndex>
+							<maxIndex>5</maxIndex>
+			</rollingPolicy>
+			<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+							<MaxFileSize>10000KB</MaxFileSize>
+			</triggeringPolicy>
+	</appender>
+
+    <logger name="org.eclipse.packagedrone" level="WARN"/>
+
+	<root level="WARN">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>

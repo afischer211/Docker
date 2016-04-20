@@ -1,0 +1,5 @@
+[package-drone]
+name=Package Drone
+baseurl=http://download.eclipse.org/package-drone/release/current/rhel7
+enabled=1
+gpgcheck=1
