@@ -20,6 +20,9 @@ ENV PATH $PATH:$VERTX_HOME/bin
 RUN mkdir -p /usr/local/src
 WORKDIR /usr/local/src
 
+# mountable directory for external storage of sources
+VOLUME /usr/local/src
+
 # Expose
 EXPOSE 8080
 
