@@ -38,6 +38,7 @@ RUN echo 'DRONE_STORAGE_BASE="/storage"' >> $PDRONE_CFG_HOME/package-drone-serve
 # mountable directory for external storage of repo-data
 VOLUME /storage
 VOLUME /var/log/package-drone
+VOLUME /var/lib/package-drone-server/cm
 
 # Hostname for logstash
 ENV LOGSTASH_HOST=
