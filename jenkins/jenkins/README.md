@@ -2,8 +2,7 @@
 
 The Jenkins Continuous Integration and Delivery server.
 
-This is a fully functional Jenkins server, based on the Long Term Support release
-[http://jenkins-ci.org/](http://jenkins-ci.org/).
+This is a fully functional Jenkins server, based on the current release [http://jenkins-ci.org/](http://jenkins-ci.org/).
 This image is derived from the official jenkins image at https://hub.docker.com/_/jenkins/ for supporting newer versions (>2.0). The base-code is almost the same.
 
 <img src="http://jenkins-ci.org/sites/default/files/jenkins_logo.png"/>
