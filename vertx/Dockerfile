@@ -2,6 +2,12 @@ FROM java:8-jdk-alpine
  
 MAINTAINER Alexander Fischer <fischer.alexander@web.de>
 
+USER root
+
+ARG PROXY=""
+
+ENV http_proxy=$PROXY
+
 # Install dev tools: jdk, git etc...
 RUN apk add --update wget bash
  
@@ -25,6 +31,8 @@ VOLUME /usr/local/src
 
 # Expose
 EXPOSE 8080
+
+ENV http_proxy=""
 
 # Run
 ENTRYPOINT ["/bin/bash","/usr/local/vertx/vert.x-2.1.6/bin/vertx"]

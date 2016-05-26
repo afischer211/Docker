@@ -1,6 +1,12 @@
 FROM centos:7
 MAINTAINER Alexander Fischer <fischer.alexander@web.de>
 
+USER root
+
+ARG PROXY=""
+
+ENV http_proxy=$PROXY
+
 # import key
 RUN yum install -y wget yum-utils
 RUN wget http://download.eclipse.org/package-drone/PD-GPG-KEY
@@ -46,8 +52,12 @@ ENV LOGSTASH_HOST=
 # Port for logstash
 ENV LOGSTASH_PORT=12201
 
+ENV http_proxy=""
+
 # Package drone is running on port 8080
 EXPOSE 8080
+
+USER pdrone
 
 # Starting vertx, vertx is added to the PATH above
 ENTRYPOINT ["/bin/sh","/startup_pdrone.sh"]

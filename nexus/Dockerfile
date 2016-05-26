@@ -3,6 +3,10 @@ MAINTAINER Alexander Fischer <fischer.alexander@web.de>
 
 USER root
 
+ARG PROXY=""
+
+ENV http_proxy=$PROXY
+
 RUN yum install -y unzip \
  yum clean all
 
@@ -29,5 +33,7 @@ RUN curl --fail --silent --location --retry 3 \
   && find /opt/sonatype/nexus/nexus/WEB-INF/plugin-repository/nexus-p2-bridge-plugin-${NEXUS_VERSION} \
     -type f -exec chmod 644 {} \; \
   && rm /tmp/nexus-p2-bridge-plugin-${NEXUS_VERSION}-bundle.zip
+
+ENV http_proxy=""
 
 USER nexus
