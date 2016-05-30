@@ -1,5 +1,5 @@
 #use weekly build for jenkins and add some tools
-FROM jenkinsci/jenkins
+FROM jenkinsci/jenkins:latest
 MAINTAINER Alexander Fischer <fischer.alexander@web.de>
 
 USER root
