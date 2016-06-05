@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration>
+ 
+<configuration>
+
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<resetJUL>true</resetJUL>
+	</contextListener>
+ 
+    <appender name="gelf" class="biz.paluch.logging.gelf.logback.GelfLogbackAppender">
+        <host>udp:[logstash-host]</host>
+        <port>[logstash-port]</port>
+        <version>1.0</version>
+        <facility>package-drone</facility>
+        <extractStackTrace>true</extractStackTrace>
+        <filterStackTrace>true</filterStackTrace>
+        <mdcProfiling>true</mdcProfiling>
+        <timestampPattern>yyyy-MM-dd HH:mm:ss,SSSS</timestampPattern>
+        <maximumMessageSize>8192</maximumMessageSize>
+        <mdcFields>mdcField1,mdcField2</mdcFields>
+        <dynamicMdcFields>myMdc.*,[a-z]+Field</dynamicMdcFields>
+        <includeFullMdc>true</includeFullMdc>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+    </appender>
+    <logger name="org.eclipse.packagedrone" level="WARN"/>
+ 
+    <root level="WARN">
+        <appender-ref ref="gelf" />
+    </root>
+</configuration>
