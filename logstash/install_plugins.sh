@@ -11,4 +11,4 @@ if [ -d /config-dir ]; then
 	done
 fi
 
-/docker-entrypoint.sh $*
+exec /docker-entrypoint.sh $*
